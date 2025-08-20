@@ -1,0 +1,53 @@
+<html>
+<div class="top-bar">
+
+      <table style="width: 100%;">
+      <tr>
+        <td style="text-align: left;">
+          <span  style="line-height: 1 "><b>  </b></span>
+          <img src="logo_removebg.png" alt="Logo" height="80" style="vertical-align: middle;">
+          <span  style="line-height: 1 "><b>InteGirls LA/OC</b></span>
+        </td>
+        <td style="text-align: right;">
+          <a href="#" onclick="setCurrentPage('home'); loadContent('home.html')" class="nav-link">Home</a> |
+          <a href="#" onclick="setCurrentPage('compete'); loadContent('compete/compete.html')" class="nav-link">Compete</a> |
+          <a href="#" onclick="setCurrentPage('past'); loadContent('past-events.html')" class="nav-link">Past Events</a> |
+          <a href="#" onclick="setCurrentPage('sponsors'); loadContent('sponsors/sponsors.html')" class="nav-link">Sponsors</a> |
+          <a href="#" onclick="setCurrentPage('donate'); loadContent('donate/donate.html')" class="nav-link">Donate</a> |
+          <a href="#" onclick="setCurrentPage('team'); loadContent('about/about.html')" class="nav-link">Our Team  </a>
+
+        <script>
+          // Set current page based on URL
+          function setCurrentPage(pageName) {
+            // Remove current class from all links
+            document.querySelectorAll('.nav-link').forEach(link => {
+              link.classList.remove('current');
+            });
+            // Add current class to clicked link
+            event.target.classList.add('current');
+            // Store current page in localStorage
+            localStorage.setItem('currentPage', pageName);
+          }
+
+          // Set current page on page load
+          document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = localStorage.getItem('currentPage') || 'home';
+            // Find the link corresponding to current page
+            document.querySelectorAll('.nav-link').forEach(link => {
+              if (link.textContent.toLowerCase().includes(currentPage) ||
+                  (currentPage === 'home' && link.textContent.toLowerCase() === 'home') ||
+                  (currentPage === 'compete' && link.textContent.toLowerCase() === 'compete') ||
+                  (currentPage === 'past' && link.textContent.toLowerCase() === 'past events') ||
+                  (currentPage === 'sponsors' && link.textContent.toLowerCase() === 'sponsors') ||
+                  (currentPage === 'donate' && link.textContent.toLowerCase() === 'donate') ||
+                  (currentPage === 'team' && link.textContent.toLowerCase() === 'our team')) {
+                link.classList.add('current');
+              }
+            });
+          });
+        </script>
+        </td>
+      </tr>
+    </table>
+</div>
+</html>
